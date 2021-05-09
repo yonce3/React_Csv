@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import './SelectCSVForm'
 import SelectCSVForm from './SelectCSVForm';
 import styled from 'styled-components';
+import ToDoList from './ToDoList';
+import { isConstructorDeclaration } from 'typescript';
 
 function App() {
+  const sampleList = new Array("String", "Hello", "hoge");
+
   return (
     <div className="App">
       <header className="App-header">
         <Title />
         <SelectCSVForm />
         <Button />
-        <ToDoListItem></ToDoListItem>
+        <ToDoList todoItems={ sampleList }/>
         <a
           className="App-link"
           href="https://reactjs.org"
