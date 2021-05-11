@@ -5,25 +5,21 @@ import SelectCSVForm from './SelectCSVForm';
 import styled from 'styled-components';
 import ToDoList from './ToDoList';
 import { isConstructorDeclaration } from 'typescript';
+import ToDoTextField from './ToDoTextField';
 
 function App() {
   const sampleList = new Array("String", "Hello", "hoge");
+
+  const [todo, addTodo] = useState([]);
 
   return (
     <div className="App">
       <header className="App-header">
         <Title />
         <SelectCSVForm />
+        <ToDoTextField />
         <Button />
-        <ToDoList todoItems={ sampleList }/>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-            Learn React
-        </a>
+        <ToDoList todoItems={ todo }/>
       </header>
     </div>
   );
@@ -56,19 +52,6 @@ class Button extends React.Component<any, any> {
       {this.state.isToggleOn ? "テスト" : "Hello"}
       </button>
   }
-}
-
-class ToDoListItem extends React.Component {
-  render() {
-    return (
-      <div className="ToDoListItem">
-        <div className="ToDoListItem-title">テスt</div>
-        <div className="ToDoListItem-description">文章</div>
-      </div>
-    );
-  }
-
-
 }
 
 export default App;

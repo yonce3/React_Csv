@@ -11,9 +11,9 @@ export default class ToDoItem extends React.Component<Props> {
     }
     render() {
         return (
-            <div>
+            <>
                 <h1>{this.props.item}</h1>
-            </div>
+            </>
         );
     }
 }
