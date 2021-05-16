@@ -4,31 +4,66 @@ import './SelectCSVForm'
 import SelectCSVForm from './SelectCSVForm';
 import styled from 'styled-components';
 import ToDoList from './ToDoList';
-import { isConstructorDeclaration } from 'typescript';
 import ToDoTextField from './ToDoTextField';
+import ToDoItem from './ToDoItem';
 
 function App() {
-  const sampleList = new Array("String", "Hello", "hoge");
 
-  const [todo, addTodo] = useState([]);
+  interface Todo {
+    id: Number,
+    todo: String
+  }
+
+  const [todo, setTodo] = useState("");
+  const [item, setItem] = useState<Todo>();
+  const [todos, setList] = useState(Array<Todo>());
+  const [todoCount, addCount] = useState(0);
+  
+  // const removeTodo = () => {
+  //    todo
+  // }
+
+  const AddTodo = (title: String) => {
+    addCount(todoCount + 1)
+    todos.push({ id: todoCount, todo: title });
+    setItem({ id: todoCount, todo: title });
+    setList({ ...todos });
+  }
+
+  function Hello() {
+    return (
+      <h1>{todoCount}</h1>
+    )
+  }
+
+  function handleClick() {
+    AddTodo(todo)
+  }
 
   return (
     <div className="App">
       <header className="App-header">
         <Title />
-        <SelectCSVForm />
-        <ToDoTextField />
-        <Button />
-        <ToDoList todoItems={ todo }/>
+        <Hello />
+        {/* <SelectCSVForm /> */}
+        <div>
+          <form onSubmit={handleClick}>
+            <input value={todo} onChange={(event) => setTodo(event.target.value)}></input>
+            <input type="submit" value="Add Todo" />
+          </form>
+        </div>
+        {/* <ToDoTextField addClick={ AddTodo }/> */}
+        {/* <ToDoList todoItems={ todos }/> */}
+        <ToDoItem item={ item } />
       </header>
     </div>
   );
 }
 
-class Title extends React.Component {
-  render() {
-    return <h2>ToDoアプリ</h2>
-  }
+function Title() {
+  return (
+    <h2>ToDo App</h2>
+  )
 }
 
 class Button extends React.Component<any, any> {

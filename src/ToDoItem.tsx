@@ -1,19 +1,18 @@
 import React from 'react';
 
 interface Props {
-    item: String;
+    item: Todo;
 }
 
-export default class ToDoItem extends React.Component<Props> {
+interface Todo {
+    id: Number,
+    todo: String
+}
 
-    constructor(props: any) {
-        super(props);
-    }
-    render() {
-        return (
-            <>
-                <h1>{this.props.item}</h1>
-            </>
-        );
-    }
+export default function ToDoItem(props: Props) {
+    return (
+        <>
+            <h2>{props.item.todo}</h2>
+        </>
+    )
 }

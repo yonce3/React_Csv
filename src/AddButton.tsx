@@ -1,9 +1,9 @@
 import { useState } from "react"
 
-export default function AddButton() {
+export default function AddButton(props: any) {
     const [title, setTitle] = useState("test");
 
     return (
-        <button onClick={() => setTitle("Hello")}>{title}</button>
+        <button onClick={props.onclick}>{title}</button>
     )
 }

@@ -1,21 +1,26 @@
 import React from 'react';
 import ToDoItem from './ToDoItem';
 
-interface Props {
-    todoItems: Array<String>;
+interface Todo {
+    id: Number,
+    todo: String
 }
 
-const sampleList = ["hello", "world", "hoge"];
+interface Props {
+    todoItems: Array<Todo>;
+}
 
 export default class ToDoList extends React.Component<Props> {
-    constructor(props: any) {
+    constructor(props: Props) {
         super(props);
     }
+
     render() {
         return (
-            this.props.todoItems.map((item) =>
-                <ToDoItem item={item} />
+                this.props.todoItems.map((item) =>
+                    <ToDoItem item={item} />
                 )
         )
     }
+    
 }
