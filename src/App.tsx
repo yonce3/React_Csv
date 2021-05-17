@@ -15,7 +15,6 @@ function App() {
   }
 
   const [todo, setTodo] = useState("");
-  const [item, setItem] = useState<Todo>();
   const [todos, setList] = useState(Array<Todo>());
   const [todoCount, addCount] = useState(0);
   
@@ -26,7 +25,6 @@ function App() {
   const AddTodo = (title: String) => {
     addCount(todoCount + 1)
     todos.push({ id: todoCount, todo: title });
-    setItem({ id: todoCount, todo: title });
     setList({ ...todos });
   }
 
@@ -46,15 +44,14 @@ function App() {
         <Title />
         <Hello />
         {/* <SelectCSVForm /> */}
-        <div>
+        {/* <div>
           <form onSubmit={handleClick}>
             <input value={todo} onChange={(event) => setTodo(event.target.value)}></input>
             <input type="submit" value="Add Todo" />
           </form>
-        </div>
-        {/* <ToDoTextField addClick={ AddTodo }/> */}
-        {/* <ToDoList todoItems={ todos }/> */}
-        <ToDoItem item={ item } />
+        </div> */}
+        <ToDoTextField addClick={ AddTodo }/>
+        <ToDoList todoItems={ todos }/>
       </header>
     </div>
   );
