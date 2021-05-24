@@ -16,8 +16,8 @@ export default function ToDoTextField(props: any) {
     )
 
     function handleClick() {
-        console.log(todo)
-        props.
-        setTodo("")
+        //console.log(todo)
+        props.addClick()
+        //ssetTodo("")
     }
 }
